@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Screen Screenshot</title>
+    <style>
+        #screenshot-frame {
+            border: 2px solid #000;
+            margin-top: 20px;
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <button id="capture-btn">Capture Full Screen</button>
+    <div id="screenshot-frame"></div>
+
+    <!-- Include html2canvas Library -->
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+
+    <script>
+        document.getElementById('capture-btn').addEventListener('click', () => {
+            html2canvas(document.body).then(canvas => {
+                const frame = document.getElementById('screenshot-frame');
+                frame.innerHTML = ''; // Clear previous screenshot
+                frame.appendChild(canvas);
+            });
+        });
+    </script>
+</body>
+</html>
