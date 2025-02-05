@@ -1,48 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Capture Full Screen Screenshot</title>
-  <!-- Include html2canvas library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-    #screenshot-frame {
-      margin-top: 20px;
-      border: 2px solid #ccc;
-      max-width: 100%;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot with Gemini Pro Vision</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Capture Full Screen Screenshot</h1>
-  <button id="capture-btn">Capture Screenshot</button>
-  <div id="screenshot-container">
-    <img id="screenshot-frame" src="#" alt="Screenshot will appear here" style="display:none;" />
-  </div>
+    <div class="container">
+        <h1>AI Chatbot with MCQ Solver</h1>
+        
+        <!-- File Upload Section -->
+        <div class="upload-section">
+            <h2>Upload MCQ Images</h2>
+            <input type="file" id="fileInput" multiple accept="image/jpeg">
+            <button onclick="processImages()">Submit Images</button>
+            <div id="imageResults"></div>
+        </div>
 
-  <script>
-    // Add event listener to the button
-    document.getElementById('capture-btn').addEventListener('click', function() {
-      // Capture the entire screen
-      html2canvas(document.body).then(function(canvas) {
-        // Convert the canvas to a data URL (image)
-        var screenshot = canvas.toDataURL('image/png');
-
-        // Display the screenshot in the frame
-        var screenshotFrame = document.getElementById('screenshot-frame');
-        screenshotFrame.src = screenshot;
-        screenshotFrame.style.display = 'block';
-      });
-    });
-  </script>
+        <!-- Chat Interface -->
+        <div class="chat-section">
+            <h2>Chat with AI</h2>
+            <div id="chatBox">
+                <!-- Chat messages will appear here -->
+            </div>
+            <input type="text" id="chatInput" placeholder="Type your question here...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
